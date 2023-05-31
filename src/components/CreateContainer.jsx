@@ -15,8 +15,8 @@ import RecentUpload from "./RecentUpload";
 const CreateContainer = () => {
   const [product, setProduct] = useState({
     productName: "",
-    productNameEntered: "",
-    productCatogories: "",
+    productSubCatogory: "",
+    productCatogoryMain: "",
     productImage: "",
     productCalories: "",
     productPrice: "",
@@ -29,9 +29,8 @@ const CreateContainer = () => {
   const [msg, setMsg] = useState("Chetan Jorwal");
   const [danger, setDanger] = useState("success");
   const [isMsg, setIsMsg] = useState(false);
-  const [category, setCategory] = useState("");
 
-  const filteredProducts = categories.find((cat) => cat.name === product.productCatogories)?.items;
+  const filteredSubCatogory = categories.find((cat) => cat.name === product.productCatogoryMain)?.subcategory;
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -116,7 +115,7 @@ const CreateContainer = () => {
   const saveProductDetails = () => {
     setIsLoadingImage(true);
     try {
-      if (!product.productName || !product.productImage || !product.productPrice || !categories) {
+      if (!product.productName || !product.productImage || !product.productPrice || !product.productCatogoryMain || !product.productSubCatogory) {
         setIsMsg(true);
         setMsg("Required fields can't be empty!!");
         setDanger("danger");
@@ -131,7 +130,8 @@ const CreateContainer = () => {
           id: `${Date.now()}`,
           title: product.productName,
           imgURL: product.productImage,
-          category: product.productCatogories,
+          category: product.productCatogoryMain,
+          subcategory: product.productSubCatogory,
           calories: product.productCalories,
           qty: 1,
           price: product.productPrice,
@@ -166,7 +166,8 @@ const CreateContainer = () => {
       return {
         ...preve,
         productName: "",
-        productCatogories: "Select categories",
+        productSubCatogory: "Select Sub Catogorys",
+        productCatogoryMain: "Select categories",
         productImage: "",
         productCalories: "",
         productPrice: "",
@@ -176,7 +177,7 @@ const CreateContainer = () => {
   }
 
   console.log(product);
-  console.log(category);
+  // console.log(category);
   return (
     <div className="py-5 md:py-10 font__5">
       <h1 className="capitalize text-lg md:text-2xl  font-semibold before:rounded-lg relative before:absolute before:-bottom-2 before:content before:left-0 before:w-32 before:h-1 before:bg-yellow-300 transition-all ease-in-out duration-100 text-fuchsia-300">Add new Item in Menu</h1>
@@ -192,10 +193,10 @@ const CreateContainer = () => {
         </div>
         <div className="border-teal-400 border-b-2 border-solid flex items-center box-border">
           <MdDriveFileRenameOutline className="text-2xl text-pink-50" />
-          <input type="text" placeholder="Enter the name" name="productNameEntered" value={product.productNameEntered} onChange={handleOnChange} className="px-3 py-1 w-full bg-transparent text-lime-100 border-none outline-none text-base box-border" />
+          <input type="text" placeholder="Enter the name" name="productName" value={product.productName} onChange={handleOnChange} className="px-3 py-1 w-full bg-transparent text-lime-100 border-none outline-none text-base box-border" />
         </div>
         <div className="box-border border-teal-400">
-          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productCatogories" onChange={handleOnChange} value={product.productCatogories}>
+          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productCatogoryMain" onChange={handleOnChange} value={product.productCatogoryMain}>
             <option value="Other">Select categories</option>
             {categories &&
               categories.map((el) => (
@@ -206,9 +207,9 @@ const CreateContainer = () => {
           </select>
         </div>
         <div className="box-border border-teal-400">
-          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productName" onChange={handleOnChange} value={product.productName}>
+          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productSubCatogory" onChange={handleOnChange} value={product.productSubCatogory}>
             <option value="Other">Select Product</option>
-            {filteredProducts?.map((el) => (
+            {filteredSubCatogory?.map((el) => (
               <option value={el.url} key={el.id}>
                 {el.name}
               </option>
