@@ -15,6 +15,7 @@ import RecentUpload from "./RecentUpload";
 const CreateContainer = () => {
   const [product, setProduct] = useState({
     productName: "",
+    productNameEntered: "",
     productCatogories: "",
     productImage: "",
     productCalories: "",
@@ -30,26 +31,18 @@ const CreateContainer = () => {
   const [isMsg, setIsMsg] = useState(false);
   const [category, setCategory] = useState("");
 
+  const filteredProducts = categories.find((cat) => cat.name === product.productCatogories)?.items;
+
   const handleOnChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     console.log(name, value);
-    if (name === "productCatogories") {
-      setProduct((preve) => {
-        return {
-          ...preve,
-          productCatogories: value,
-          productName: "select product",
-        };
-      });
-      setCategory(value);
-    } else
-      setProduct((preve) => {
-        return {
-          ...preve,
-          productName: value,
-        };
-      });
+    setProduct((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
 
   const uploadImage = (e) => {
@@ -199,7 +192,7 @@ const CreateContainer = () => {
         </div>
         <div className="border-teal-400 border-b-2 border-solid flex items-center box-border">
           <MdDriveFileRenameOutline className="text-2xl text-pink-50" />
-          <input type="text" placeholder="Enter the name" name="productName" value={product.productName} onChange={handleOnChange} className="px-3 py-1 w-full bg-transparent text-lime-100 border-none outline-none text-base box-border" />
+          <input type="text" placeholder="Enter the name" name="productNameEntered" value={product.productNameEntered} onChange={handleOnChange} className="px-3 py-1 w-full bg-transparent text-lime-100 border-none outline-none text-base box-border" />
         </div>
         <div className="box-border border-teal-400">
           <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productCatogories" onChange={handleOnChange} value={product.productCatogories}>
@@ -213,16 +206,13 @@ const CreateContainer = () => {
           </select>
         </div>
         <div className="box-border border-teal-400">
-          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="products" onChange={handleOnChange} value={product.productName}>
+          <select className="w-full my-3 py-2 px-3 text-base bg-slate-800 border-2 border-solid rounded box-border border-teal-400 text-lime-100" name="productName" onChange={handleOnChange} value={product.productName}>
             <option value="Other">Select Product</option>
-            {category &&
-              categories
-                .find((cat) => cat.name === category)
-                .items.map((el) => (
-                  <option value={el.url} key={el.id}>
-                    {el.name}
-                  </option>
-                ))}
+            {filteredProducts?.map((el) => (
+              <option value={el.url} key={el.id}>
+                {el.name}
+              </option>
+            ))}
           </select>
         </div>
         <label htmlFor="uploadImage">
