@@ -51,4 +51,38 @@ export const categories = [
       { id: "4", name: "Momos", url: "momos" },
     ],
   },
+  
+  {
+    id: 4,
+    name: "Thai",
+    subcategory: "Momos",
+    items: [
+      { id: "1", name: "Momos", url: "Momos1" },
+      { id: "2", name: "Momos", url: "Momos2" },
+      { id: "3", name: "Momos", url: "Momos3" },
+      { id: "4", name: "Momos", url: "Momos4" },
+    ],
+  },
+  {
+    id: 5,
+    name: "South-Indian",
+    subcategory: "Dosa",
+    items: [
+      { id: "1", name: "Dosa", url: "Dosa1" },
+      { id: "2", name: "Dosa", url: "Dosa2" },
+      { id: "3", name: "Dosa", url: "Dosa3" },
+      { id: "4", name: "Dosa", url: "Dosa4" },
+    ],
+  },
+  {
+    id: 5,
+    name: "South-Indian",
+    subcategory: "Idli",
+    items: [
+      { id: "1", name: "Idli", url: "Idli1" },
+      { id: "2", name: "Idli", url: "Idli2" },
+      { id: "3", name: "Idli", url: "Idli3" },
+      { id: "4", name: "Idli", url: "Idli4" },
+    ],
+  },
 ];
