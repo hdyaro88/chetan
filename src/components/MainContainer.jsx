@@ -15,8 +15,8 @@ const MainContainer = () => {
    <>
     <div className="w-full ">
       <Home/>
-      <Feature/>
       <Menu/>
+      <Feature/>
       <Laurels />
     </div>
    </>

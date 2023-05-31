@@ -43,27 +43,36 @@ export const categories = [
   },
 
   {
-    id: 3,
-    name: "West-Indian",
-    subcategory: [
-      {
-        name: "Kachori",
-        items: [
-          { id: "1", name: "Kachori", url: "Kachori1" },
-          { id: "2", name: "Kachori", url: "Kachori2" },
-          { id: "3", name: "Kachori", url: "Kachori3" },
-          { id: "4", name: "Kachori", url: "Kachori4" },
-        ],
-      },
-      {
-        name: "bhel",
-        items: [
-          { id: "1", name: "bhel", url: "bhel1" },
-          { id: "2", name: "bhel", url: "bhel2" },
-          { id: "3", name: "bhel", url: "bhel3" },
-          { id: "4", name: "bhel", url: "bhel4" },
-        ],
-      },
+    id: 4,
+    name: "Thai",
+    subcategory: "Momos"
+    items: [
+      { id: "1", name: "Momos", url: "Momos1" },
+      { id: "2", name: "Momos", url: "Momos2" },
+      { id: "3", name: "Momos", url: "Momos3" },
+      { id: "4", name: "Momos", url: "Momos4" },
+    ],
+  },
+  {
+    id: 5,
+    name: "South-Indian",
+    subcategory: "Dosa"
+    items: [
+      { id: "1", name: "Dosa", url: "Dosa1" },
+      { id: "2", name: "Dosa", url: "Dosa2" },
+      { id: "3", name: "Dosa", url: "Dosa3" },
+      { id: "4", name: "Dosa", url: "Dosa4" },
+    ],
+  },
+  {
+    id: 5,
+    name: "South-Indian",
+    subcategory: "Idli"
+    items: [
+      { id: "1", name: "Idli", url: "Idli1" },
+      { id: "2", name: "Idli", url: "Idli2" },
+      { id: "3", name: "Idli", url: "Idli3" },
+      { id: "4", name: "Idli", url: "Idli4" },
     ],
   },
 ];
