@@ -12,7 +12,7 @@ import Loading from "../utils/Loading";
 import { FaAward } from "react-icons//fa";
 import "../home.css";
 
-const Menu = ({ heading = "Our Menu", filterbyProps = "fruits" }) => {
+const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
   const productItem = useSelector((state) => state.productItem.productItem);
   const productLoading = useSelector((state) => state.productItem.productLoading);
   // console.log(productLoading)
