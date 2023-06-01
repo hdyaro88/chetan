@@ -43,7 +43,8 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
   const filterByCategory = (by) => {
     console.log(by);
     // setFilterBy({ subCategory: by.toLowerCase() });
-    const subCats = productItem.filter((el) => el.category === by).map((el) => el.subcategory);
+    const subCats = [...new Set(productItem.filter((el) => el.category === by).map((el) => el.subcategory))];
+
     setSubCats(subCats);
     setItems([]);
     setFilterBy({ category: by, subcategory: "" });
@@ -54,7 +55,7 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
     setFilterBy((prev) => {
       return { ...prev, subcategory: by };
     });
-    const items = productItem.filter((el) => el.subcategory === by);
+    const items = [...new Set(productItem.filter((el) => el.subcategory === by))];
     setItems([...items]);
   };
 
