@@ -179,18 +179,10 @@ const Header = () => {
 
                       className="whitespace-nowrap flex hover:bg-green-400 hover:text-textColor text-gray-700 py-1 px-2 items-center w-full gap-3"
                     >
-                      New Item in Menu
+                      Add New Item
                       <MdAddCircleOutline className=" flex items-center justify-items-center" />
                     </Link>
-                    <Link
-                      to={"./popularitem"}
-                      onClick={() => setIsLogin(false)}
-
-                      className="whitespace-nowrap flex hover:bg-green-400 hover:text-textColor text-gray-700 py-1 px-2 items-center w-full gap-3"
-                    >
-                        New Item in Popular
-                        <MdAddCircleOutline className=" flex items-center justify-items-center" />
-                      </Link></>
+                    </>
                   }
                 </div>
 
