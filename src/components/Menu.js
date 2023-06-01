@@ -73,18 +73,23 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
               {heading}
             </h2>
           </div>
-          <div className="flex flex-wrap justify-center my-6">
-            {allCategory.map((el) => (
-              <div className="hidden md:block" key={el + "category"}>
-                <CatCardFilter name={el} active={filterBy.category?.toLowerCase() === el?.toLowerCase()} onClick={() => filterByCategory(el)} />
-              </div>
-            ))}
+          <div className="flex flex-col">
+            <div className="flex flex-wrap justify-center my-6">
+              {allCategory.map((el) => (
+                <div className="hidden md:block mt-2" key={el + "category"}>
+                  <CatCardFilter name={el} active={filterBy.category?.toLowerCase() === el?.toLowerCase()} onClick={() => filterByCategory(el)} />
+                </div>
+              ))}
+            </div>
 
-            {subCats.map((el) => (
-              <div className="hidden md:block" key={el + "category"}>
-                <SubCatCardFilter name={el} active={filterBy.subcategory?.toLowerCase() === el?.toLowerCase()} onClick={() => filterBySubCategory(el)} />
-              </div>
-            ))}
+            <div className="flex flex-wrap justify-center my-6">
+              {subCats.map((el) => (
+                <div className="hidden md:block" key={el + "category"}>
+                  <SubCatCardFilter name={el} active={filterBy.subcategory?.toLowerCase() === el?.toLowerCase()} onClick={() => filterBySubCategory(el)} />
+                </div>
+              ))}
+            </div>
+
 
             <div className="flex md:hidden w-full max-w-xs text-lg  items-center justify-between p-1.5 border mb-2  border-solid rounded-md border-cyan-400">
               <FaFilter className="text-xl mr-2 text-white" />
@@ -108,7 +113,6 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
               </select>
             </div>
 
-            
           </div>
           <div className="my-6 flex flex-wrap gap-4 max-w-5xl m-auto justify-center md:justify-start">
             {productLoading ? (
