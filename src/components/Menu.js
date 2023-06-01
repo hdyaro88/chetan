@@ -4,7 +4,8 @@ import { useMemo } from "react";
 import { useState } from "react";
 
 import { useSelector } from "react-redux";
-import CardFilter from "./cardFilter";
+import CatCardFilter from "./CatcardFilter";
+import SubCatCardFilter from "./SubCatcardFilter";
 import RenderFilter from "./renderFilter";
 import { FaFilter } from "react-icons/fa";
 import Loading from "../utils/Loading";
@@ -75,19 +76,19 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
           <div className="flex flex-wrap justify-center my-6">
             {allCategory.map((el) => (
               <div className="hidden md:block" key={el + "category"}>
-                <CardFilter name={el} active={filterBy.category?.toLowerCase() === el?.toLowerCase()} onClick={() => filterByCategory(el)} />
+                <CatCardFilter name={el} active={filterBy.category?.toLowerCase() === el?.toLowerCase()} onClick={() => filterByCategory(el)} />
               </div>
             ))}
 
             {subCats.map((el) => (
               <div className="hidden md:block" key={el + "category"}>
-                <CardFilter name={el} active={filterBy.subcategory?.toLowerCase() === el?.toLowerCase()} onClick={() => filterBySubCategory(el)} />
+                <SubCatCardFilter name={el} active={filterBy.subcategory?.toLowerCase() === el?.toLowerCase()} onClick={() => filterBySubCategory(el)} />
               </div>
             ))}
 
-            <div className="flex md:hidden w-full max-w-xs text-lg  items-center border-2 border-solid rounded px-3 py-1">
+            <div className="flex md:hidden w-full max-w-xs text-lg  items-center justify-between p-1.5 border mb-2  border-solid rounded-md border-cyan-400">
               <FaFilter className="text-xl mr-2 text-white" />
-              <select onChange={(e) => filterByProduct(e.target.value)} className="w-full bg-black text-pink-50 font__5 border-none outline-none">
+              <select onChange={(e) => filterByCategory(e.target.value)} className="w-full bg-black text-pink-50 font__5 border-none outline-none">
                 {allCategory.map((el) => (
                   <option value={el} className="capitalize bg-s" key={el + "optionMenu"}>
                     {el}
@@ -95,6 +96,19 @@ const Menu = ({ heading = "Best Dishes", filterbyProps = "Itailian" }) => {
                 ))}
               </select>
             </div>
+
+            <div className="flex md:hidden w-full max-w-xs text-lg  items-center border-solid rounded-md justify-between p-1.5 border border-cyan-400 mb-2">
+              <FaFilter className="text-xl mr-2 text-white" />
+              <select onChange={(e) => filterBySubCategory(e.target.value)} className="w-full bg-black text-pink-50 font__5 border-none outline-none">
+                {subCats.map((el) => (
+                  <option value={el} className="capitalize bg-s" key={el + "optionMenu"}>
+                    {el}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            
           </div>
           <div className="my-6 flex flex-wrap gap-4 max-w-5xl m-auto justify-center md:justify-start">
             {productLoading ? (
