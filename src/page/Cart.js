@@ -93,7 +93,6 @@ const Cart = () => {
               <Form>
                 <div className="bg-black flex-delivery div__1 ">
                   <p> Delivery Detail -</p>
-                  <br />
                   <div className="form">
                     <span className=" display-contact">
                       <p className=" font__5 text-lime-100">Contact -</p>
@@ -113,19 +112,17 @@ const Cart = () => {
                         <span class="validity"></span>
                       </div>
                     </span>
-                    {/* </div>
+                    
 
-                  <div className="form"> */}
-                    <br />
+                    <p className=" font__5 text-lime-100">Address -</p>
                     <div style={{ margin: "1rem", display: "inline-block" }}>
                       <label htmlFor="home">Home</label>
-                      <input style={{ margin: "0 1rem" }} checked={addType === "home"} onChange={(e) => setAddType(e.target.value)} type="checkbox" name="home" id="home" value="home" />
+                      <input style={{ margin: "0 1rem", color:"green" }} checked={addType === "home"} onChange={(e) => setAddType(e.target.value)} type="checkbox" name="home" id="home" value="home" />
                     </div>
                     <div style={{ margin: "1rem", display: "inline-block" }}>
-                      <label htmlFor="other">Other</label>
+                      <label htmlFor="other" style={{color: "red"}}>Other</label>
                       <input style={{ margin: "0 1rem" }} checked={addType === "other"} onChange={(e) => setAddType(e.target.value)} type="checkbox" name="home" id="home" value="other" />
                     </div>
-                    <p className=" font__5 text-lime-100">Address -</p>
                     <div className="newsletter_delivery font__5 border-teal-500 font-semibold text-xm">
                       <input className="form-input" type="text" size={15} minLength={1} maxLength={15} required placeholder="Flat/House No." />
                     </div>
